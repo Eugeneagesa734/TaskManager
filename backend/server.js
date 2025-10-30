@@ -6,6 +6,10 @@ const { Console } = require("console");
 const { connect } = require("http2");
 const connectDB = require("./config/db");
 
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const taskRoutes = require("./routes/taskRoutes");
+
 const app = express();
 
 app.use(
@@ -25,10 +29,10 @@ app.use(express.json());
 
 
 // Routes
-// app.use("/api/auth", authRoutes);
-// app.use("/api/users", userRoutes);
-// app.use("/api/tasks", taskRoutes);
-// app.use("/api/report", reportRoutesn                  );
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/tasks", taskRoutes);
+// app.use("/api/report", reportRoutesn);
 
 //Start the server
 const PORT = process.env.PORT || 5000;
